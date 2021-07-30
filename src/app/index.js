@@ -1,15 +1,18 @@
-import { ThemeProvider } from '@material-ui/core';
 import Login from 'components/Login';
+import NotFound from 'components/NotFound';
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import theme from 'theme';
+import { BrowserRouter, Switch } from 'react-router-dom';
 
 function App() {
   return (
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <Login />
-      </ThemeProvider>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/admin" component={Admin} />
+        <Route path="/login" component={Login} />
+
+        <Route path="" component={NotFound} />
+      </Switch>
     </BrowserRouter>
   );
 }
